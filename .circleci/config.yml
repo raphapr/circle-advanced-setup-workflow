@@ -11,3 +11,4 @@ workflows:
       - dynamic/continue:
           context: circleci
           auto-detect: true
+          root-config: root
