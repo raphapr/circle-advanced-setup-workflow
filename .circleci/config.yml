@@ -10,6 +10,17 @@ parameters:
     type: boolean
     default: false
 
+jobs:
+  hello-world:
+    docker:
+      - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
+    parameters:
+      type: string
+      default: ""
+    steps:
+      - checkout # check out the code in the project directory
+      - run: echo 'Hello world from module << parameters.name >>!'
+
 workflows:
   on-commit:
     jobs:
