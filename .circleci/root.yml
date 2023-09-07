@@ -4,11 +4,16 @@ jobs:
   hello-world:
     docker:
       - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
+    parameters:
+      module:
+        type: string
+        default: "root"
     steps:
       - checkout # check out the code in the project directory
-      - run: echo 'root always run'
+      - run: echo 'Hello world from module << parameters.module >>!'
 
 workflows:
   root:
     jobs:
-      - hello-world
+      - hello-world:
+          module: root
