@@ -11,3 +11,9 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
       - run: echo 'Hello world from module << parameters.module >>!'
+
+workflows:
+  root:
+    jobs:
+      - hello-world:
+          module: root

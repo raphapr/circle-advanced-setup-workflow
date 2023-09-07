@@ -5,6 +5,11 @@ version: 2.1
 orbs:
   dynamic: bjd2385/dynamic-continuation@3.7.0
 
+parameters:
+  force-all:
+    type: boolean
+    default: false
+
 workflows:
   on-commit:
     jobs:
@@ -12,3 +17,4 @@ workflows:
           context: circleci
           auto-detect: true
           root-config: root
+          force-all: << pipeline.parameters.force-all >>
